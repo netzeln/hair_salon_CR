@@ -54,6 +54,7 @@
     static function deleteAll()
     {
         $GLOBALS['DB']->exec("DELETE FROM stylists;");
+        $GLOBALS['DB']->exec("UPDATE clients SET stylist_id = 0 ;");
     }
 
     static function find($search_id)

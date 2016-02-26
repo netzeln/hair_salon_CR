@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Revolutionary Stylist: {{client.getClientName}}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Revolutionary Styles Customer: {{client.getClientName}}</h1>
+            <div class ="container">
+                <h3> Update {{client.getClientName}}'s Information </h3>
+                <form action="/client/{{client.getId}}" method="post">
+                    <input name="_method" type="hidden" value="patch">
+                    
+                    <label for="client_name">Change Name:</label>
+                    <input type="text" name="client_name" value="{{client.getClientName}}" required>
+
+
+                    {% if stylists is empty %}
+                        <input type="hidden" name="stylist_id" value=0>
+                    {% endif %}
+
+                    {% if stylists is not empty %}
+                        <h4>Select A Stylist</h4>
+                        <select  name="stylist_id" multiple class="form-control" required>
+                            {% for stylist in stylists %}
+                            <option value="{{stylist.getId}}">{{stylist.getStylistName}}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                    <button type="submit" class="btn btn-sm btn-primary">EDIT</button>
+                </form>
+            </div>
+
+
+            </div>
+            <div class="container">
+
+                    <a href="/view_clients" class="btn btn-sm btn-success">Back to Client List!</a>
+                    <a href="/" class="btn btn-sm btn-info">Back to Stylists!</a>
+
+            <div class="container">
+                <h3>Drop {{client.getClientName}}</h3>
+                <form class="delete" action="/client/{{client.getId}}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-sm btn-danger">Drop this Client!</button>
+               </form>
+            </div>
+        </div>
+    </body>
+</html>

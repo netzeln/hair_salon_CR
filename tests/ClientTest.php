@@ -192,13 +192,15 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         $new_client2->save();
 
         $new_name = "Eliza Schuyler";
+        $new_stylist_id = 3;
 
         //act
-        $new_client2->updateClient($new_name);
+        $new_client2->updateClient($new_name, $new_stylist_id);
 
         //assert
 
         $this->assertEquals("Eliza Schuyler", $new_client2->getClientName());
+        $this->assertEquals(3, $new_client2->getStylistId());
     }
 
 }

@@ -19,7 +19,7 @@
     }
     function setStylistId($new_stylist_id)
     {
-        $this->stylist_id = $new_stylist_id;
+        $this->stylist_id = (int) $new_stylist_id;
     }
 
     //getters
@@ -83,10 +83,11 @@
 
     //individual record updates and deletes
 
-    function updateClient($new_client_name)
+    function updateClient($new_client_name, $new_stylist_id)
     {
-        $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_client_name}' WHERE id ={$this->getId()};'");
+        $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_client_name}', stylist_id = {$new_stylist_id} WHERE id = {$this->getId()};'");
         $this->setClientName($new_client_name);
+        $this->setStylistId($new_stylist_id);
     }
     function delete()
     {

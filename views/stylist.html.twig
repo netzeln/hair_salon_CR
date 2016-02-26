@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Revolutionary Stylist: {{stylist.getStylistName}}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Revolutionary Styles by {{stylist.getStylistName}}</h1>
+            <div class ="container">
+                <h3> Update {{stylist.getStylistName}}'s Clients </h3>
+                <form action="/add_client/{{stylist.getId}}" method="post">
+                    <input type="hidden" name="stylist_id" value="{{stylist.getId}}">
+                    <label for="client_name">Add New Client:</label>
+                    <input type="text" name="client_name" value="" required>
+                    <button type="submit" class="btn btn-sm btn-primary">Add</button>
+                </form>
+            </div>
+            <div class="container">
+                {% if clients is not empty %}
+                    <h3>Current Clients for {{stylist.getStylistName}}</h3>
+                    <ul>
+                        {% for client in clients %}
+                        <li>{{client.getClientName}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <h4> Note to Self: Tell {{stylist.getStylistName}} to get some Clients!</h4>
+                {% endif %}
+
+            </div>
+            <div class="container">
+
+                    <a href="/" class="btn btn-sm btn-info">Back to Stylists!</a>
+
+            <div class="container">
+                <h3>Fire {{stylist.getStylistName}}</h3>
+                <form class="delete" action="/delete_all" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">FIRE!</button>
+               </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -23,7 +23,7 @@
                     <h3>Current Stylists</h3>
                     <ul>
                         {% for stylist in stylists %}
-                        <li>{{stylist.getStylistName}}</li>
+                        <li><a href="/stylist/{{stylist.getId}}">{{stylist.getStylistName}} </a></li>
                         {% endfor %}
                     </ul>
                     {% else %}

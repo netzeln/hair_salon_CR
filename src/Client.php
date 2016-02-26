@@ -80,4 +80,10 @@
         }
         return $found_client;
     }
+
+    //individual record updates and delets
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+    }
 } ?>

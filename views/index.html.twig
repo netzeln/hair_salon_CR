@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Revolutionary Styles!</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Revolutionary Styles</h1>
+            <div class ="container">
+                <h3> Update the Revolutionary Crew </h3>
+                <form action="/add_stylist" method="post">
+                    <label for="stylist_name">Add Stylist Name:</label>
+                    <input type="text" name="stylist_name" value="">
+                    <button type="submit" class="btn btn-sm btn-primary">Add</button>
+                </form>
+            </div>
+            <div class="container">
+                {% if stylists is not empty %}
+                    <h3>Current Stylists</h3>
+                    <ul>
+                        {% for stylist in stylists %}
+                        <li>{{stylist.getStylistName}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <h2> Note to Self: Hire Stylists!</h2>
+                {% endif %}
+
+            </div>
+        </div>
+    </body>
+</html>

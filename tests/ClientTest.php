@@ -25,7 +25,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testGetId()
     {
         //arrange
-        $name = "Jane Hamilton";
+        $name = "Eliza Hamilton";
         $stylist_id = 2;
         $id = 1;
         $new_client = new Client ($name, $stylist_id, $id);
@@ -40,7 +40,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testGetName()
     {
         //arrange
-        $name = "Jane Hamilton";
+        $name = "Eliza Hamilton";
         $stylist_id = 2;
         $id = 1;
         $new_client = new Client ($name, $stylist_id, $id);
@@ -49,7 +49,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         $result = $new_client->getClientName();
 
         //assert
-        $this->assertEquals("Jane Hamilton", $result);
+        $this->assertEquals("Eliza Hamilton", $result);
     }
 
     function testSave()
@@ -77,7 +77,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
-        $name2 = "Jane Hamilton";
+        $name2 = "Eliza Hamilton";
         $stylist_id2 = 2;
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
@@ -98,7 +98,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
-        $name2 = "Jane Hamilton";
+        $name2 = "Eliza Hamilton";
         $stylist_id2 = 2;
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
@@ -120,7 +120,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
-        $name2 = "Jane Hamilton";
+        $name2 = "Eliza Hamilton";
         $stylist_id2 = 2;
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
@@ -141,7 +141,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
-        $name2 = "Jane Hamilton";
+        $name2 = "Eliza Hamilton";
         $stylist_id2 = 2;
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
@@ -152,6 +152,26 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
         //assert
         $result = Client::getAll();
         $this->assertEquals([$new_client], $result);
+    }
+
+    function testUpdateClient()
+    {
+        //arrange
+
+        $name2 = "Eliza Hamilton";
+        $stylist_id2 = 2;
+        $id=null;
+        $new_client2 = new Client ($name2, $stylist_id2, $id);
+        $new_client2->save();
+
+        $new_name = "Eliza Schuyler";
+
+        //act
+        $new_client2->updateClient($new_name);
+
+        //assert
+
+        $this->assertEquals("Eliza Schuyler", $new_client2->getClientName());
     }
 
 }

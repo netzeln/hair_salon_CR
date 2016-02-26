@@ -81,7 +81,13 @@
         return $found_client;
     }
 
-    //individual record updates and delets
+    //individual record updates and deletes
+
+    function updateClient($new_client_name)
+    {
+        $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_client_name}' WHERE id ={$this->getId()};'");
+        $this->setClientName($new_client_name);
+    }
     function delete()
     {
         $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");

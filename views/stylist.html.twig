@@ -38,8 +38,9 @@
 
             <div class="container">
                 <h3>Fire {{stylist.getStylistName}}</h3>
-                <form class="delete" action="/delete_all" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger">FIRE!</button>
+                <form class="delete" action="/stylist/{{stylist.getId}}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-sm btn-danger">FIRE this Stylist!</button>
                </form>
             </div>
         </div>

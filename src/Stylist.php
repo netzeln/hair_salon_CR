@@ -95,5 +95,6 @@
     function delete()
     {
         $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("UPDATE clients SET stylist_id = 0 WHERE stylist_id = {$this->getID()};");
     }
 } ?>

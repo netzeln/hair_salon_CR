@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Revolutionary Styles!</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Revolutionary Styles</h1>
+            <div class ="container">
+            <div class="container">
+                {% if clients is not empty %}
+                    <h3>Current Clients</h3>
+                    <ul>
+                        {% for client in clients %}
+                        <li><a href="/client/{{client.getId}}">{{client.getClientName}} </a> --
+                            {% if client.getStylistId == 0 %}
+                                NO CURRENT STYLIST
+                            {% else %}
+                                    {% for stylist in stylists %}
+                                        {% if client.getStylistId == stylist.getId %}
+                                            {{stylist.getStylistName}}
+                                        {% endif %}
+                                    {% endfor %}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <h2> Look into Advertising...</h2>
+                {% endif %}
+
+            </div>
+            <div class="container">
+
+                    <a href="/" class="btn btn-sm btn-info">Back to Stylists!</a>
+
+            <div class="container">
+            <div class="container">
+                <h3>Drop all Clients</h3>
+                <form class="delete" action="/delete_all_clients" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">Drop!</button>
+               </form>
+            </div>
+        </div>
+    </body>
+</html>

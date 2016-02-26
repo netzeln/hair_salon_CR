@@ -55,8 +55,14 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testSave()
     {
         //arrange
+
+        $name = "Thomas Jefferson";
+        $id = null;
+        $new_stylist = new Stylist ($name, $id);
+        $new_stylist->save();
+
         $name = "Eliza Hamilton";
-        $stylist_id = 2;
+        $stylist_id = $new_stylist->getId();
         $id = null;
         $new_client = new Client($name, $stylist_id, $id);
 
@@ -71,14 +77,19 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testGetAll()
     {
         //arrange
+        $name = "Thomas Jefferson";
+        $id = null;
+        $new_stylist = new Stylist ($name, $id);
+        $new_stylist->save();
+
         $name = "Theodosia Burr";
-        $stylist_id = 2;
+        $stylist_id = $new_stylist->getId();
         $id = null;
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
         $name2 = "Eliza Hamilton";
-        $stylist_id2 = 2;
+        $stylist_id2 = $new_stylist->getId();
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
 
@@ -92,15 +103,20 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testDeleteAll()
     {
         //arrange
+        $name = "Thomas Jefferson";
+        $id = null;
+        $new_stylist = new Stylist ($name, $id);
+        $new_stylist->save();
+
         $name = "Theodosia Burr";
-        $stylist_id = 2;
+        $stylist_id = $new_stylist->getId();
         $id = null;
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
         $name2 = "Eliza Hamilton";
-        $stylist_id2 = 2;
-        $new_client2 = new Client ($name, $stylist_id, $id);
+        $stylist_id2 = $new_stylist->getId();
+        $new_client2 = new Client ($name, $stylist_id2, $id);
         $new_client2->save();
 
         //act
@@ -114,14 +130,19 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testFind()
     {
         //arrange
+        $name = "Thomas Jefferson";
+        $id = null;
+        $new_stylist = new Stylist ($name, $id);
+        $new_stylist->save();
+
         $name = "Theodosia Burr";
-        $stylist_id = 2;
+        $stylist_id = $new_stylist->getId();
         $id = null;
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
         $name2 = "Eliza Hamilton";
-        $stylist_id2 = 2;
+        $stylist_id2 = $new_stylist->getId();
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
 
@@ -135,14 +156,20 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
     function testDelete()
     {
         //arrange
+
+        $name = "Thomas Jefferson";
+        $id = null;
+        $new_stylist = new Stylist ($name, $id);
+        $new_stylist->save();
+
         $name = "Theodosia Burr";
-        $stylist_id = 2;
+        $stylist_id = $new_stylist->getId();
         $id = null;
         $new_client = new Client ($name, $stylist_id, $id);
         $new_client->save();
 
         $name2 = "Eliza Hamilton";
-        $stylist_id2 = 2;
+        $stylist_id2 = $new_stylist->getId();
         $new_client2 = new Client ($name, $stylist_id, $id);
         $new_client2->save();
 

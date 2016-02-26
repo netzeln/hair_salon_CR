@@ -70,6 +70,21 @@
         return $found_stylist;
     }
 
+    //find clients by stylist
+    function getClients()
+    {
+        $found_clients = array();
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+        foreach($returned_clients as $client)
+        {
+            $name = $client['name'];
+            $stylist_id = $client['stylist_id'];
+            $id = $client['id'];
+            $found_client = new Client($name, $stylist_id, $id);
+            array_push($found_clients, $found_client);
+        }
+        return $found_clients;
+    }
     //individual record updates and deletes
 
     function updateStylist($new_stylist_name)

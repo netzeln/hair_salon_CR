@@ -20,7 +20,21 @@
 
     $app->get('/', function() use ($app)
     {
-        return $app['twig']->render('index.html.twig');
+        $stylists = Stylist::getAll();
+        return $app['twig']->render('index.html.twig', array("stylists"=>$stylists));
+    });
+
+    $app->post('/add_stylist', function() use ($app)
+    {
+        $new_stylist = new Stylist($_POST['stylist_name']);
+        $new_stylist->save();
+        return $app['twig']->render('index.html.twig', array("stylists"=>Stylist::getAll()));
+    });
+
+    $app->post('/delete_all', function() use ($app)
+    {
+        Stylist::deleteAll();
+        return $app['twig']->render('index.html.twig', array("stylists"=>Stylist::getAll()));
     });
 
 

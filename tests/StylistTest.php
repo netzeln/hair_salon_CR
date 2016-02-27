@@ -145,32 +145,32 @@ class  StylistTest  extends PHPUnit_Framework_TestCase{
         $this->assertEquals([$new_stylist], $result);
     }
 
-    // function testDeleteandUpdate()
-    // {
-    //     //arrange
-    //     $name = "Thomas Jefferson";
-    //     $id = null;
-    //     $new_stylist = new Stylist ($name, $id);
-    //     $new_stylist->save();
-    //
-    //     $name2 = "George Washington";
-    //     $new_stylist2 = new Stylist ($name, $id);
-    //     $new_stylist2->save();
-    //
-    //     $name = "Theodosia Burr";
-    //     $stylist_id = $new_stylist->getId();
-    //     $client_id = 10000;
-    //     $new_client = new Client ($name, $stylist_id, $client_id);
-    //     $new_client->save();
-    //
-    //     //act
-    //     $new_stylist->delete();
-    //
-    //     //assert
-    //
-    //     $result = Client::find($client_id);
-    //     $this->assertEquals(0, $result->getStylistId());
-    // }
+    function testDeleteandUpdate()
+    {
+        //arrange
+        $name = "Thomas Jefferson";
+        $id = null;
+        $new_stylist = new Stylist ($name, $id);
+        $new_stylist->save();
+
+
+        $name = "Theodosia Burr";
+        $stylist_id = $new_stylist->getId();
+        $client_id = null;
+        $new_client = new Client ($name, $stylist_id, $client_id);
+        $new_client->save();
+
+        $id_of_client = $new_client->getId();
+
+
+        //act
+        $new_stylist->delete();
+
+        //assert
+
+        $result = Client::find($id_of_client);
+        $this->assertEquals(0, $result->getStylistId());
+    }
 
     function testUpdateStylist()
     {

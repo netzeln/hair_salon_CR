@@ -1,0 +1,127 @@
+Last login: Fri Feb 26 07:46:50 on ttys001
+epicodus-38:~ Guest$ cd desktop/salon-CR
+epicodus-38:salon-CR Guest$ mysql start
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+epicodus-38:salon-CR Guest$ mysql.server start
+Starting MySQL
+ SUCCESS! 
+epicodus-38:salon-CR Guest$ mysql -uroot -proot
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.10 Homebrew
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> apachectl start
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'apachectl start' at line 1
+mysql> SHOW DATABASES;
++---------------------+
+| Database            |
++---------------------+
+| information_schema  |
+| mysql               |
+| performance_schema  |
+| restaurants         |
+| restaurants_DB      |
+| restaurants_DB_test |
+| restaurants_test    |
+| sys                 |
++---------------------+
+8 rows in set (0.00 sec)
+
+mysql> DROP DATABASE restaurants
+    -> ;
+Query OK, 3 rows affected (0.07 sec)
+
+mysql> DROP DATABASE restaurants_DB;
+Query OK, 2 rows affected (0.06 sec)
+
+mysql> DROP DATABASE restaurants_DB_test
+    -> ;
+Query OK, 2 rows affected (0.04 sec)
+
+mysql> DROP DATABASE restaurants_test
+    -> ;
+Query OK, 3 rows affected (0.04 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE salon;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE DATABASE salon;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> USE salon;
+Database changed
+mysql> CREATE TABLE stylists (id serial PRIMARY KEY, stylist_names VARCHAR(255));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREAT TABLE clients (id serial PRIMARY KEY, stylist_id INT, name VARCHAR(255);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREAT TABLE clients (id serial PRIMARY KEY, stylist_id INT, name VARCHAR(255)' at line 1
+mysql> CREATE TABLE clients (id serial PRIMARY KEY, stylist_id INT, name VARCHAR(255);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> CREATE TABLE clients (id serial PRIMARY KEY, stylist_id INT, name VARCHAR(255));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> ALTER TABLE stylists DROP stylist_names;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE stylists ADD stylist_name VARCHAR(255);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DROP DATABASE salon;
+Query OK, 2 rows affected (0.02 sec)
+
+mysql> USE hair_salon;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW tables;
++----------------------+
+| Tables_in_hair_salon |
++----------------------+
+| clients              |
+| stylists             |
++----------------------+
+2 rows in set (0.00 sec)
+
+mysql> DESCRIBE clients;
++------------+---------------------+------+-----+---------+----------------+
+| Field      | Type                | Null | Key | Default | Extra          |
++------------+---------------------+------+-----+---------+----------------+
+| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| stylist_id | int(11)             | YES  |     | NULL    |                |
+| name       | varchar(255)        | YES  |     | NULL    |                |
++------------+---------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE stylists;
++--------------+---------------------+------+-----+---------+----------------+
+| Field        | Type                | Null | Key | Default | Extra          |
++--------------+---------------------+------+-----+---------+----------------+
+| id           | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| stylist_name | varchar(255)        | YES  |     | NULL    |                |
++--------------+---------------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> 

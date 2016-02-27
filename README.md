@@ -13,8 +13,9 @@ _This app allows the user to enter the names of Stylists at a Hair Salon as well
 * _Clone the Repository_
 * _In your terminal, navigate to the project's main folder and run `composer install` to get Silex, Twig, and PHPUnit installed._
 * _Navigate to the project's web folder using terminal and enter `php -S localhost:8000`_
-* _Open PHPMyAdmin by going to localhost:8080/phpmyadmin in your web browser_
-* _In phpmyadmin choose the Import tab and choose your databases files and click Go. It's important to make sure you're not importing to a database that already exists, so make sure that a database with the same name as the one you're importing doesn't already exist._
+* _Start your PHP server and MySQL.
+* _Open PHPMyAdmin by going to localhost:8080/phpmyadmin (or wherever you are running it) in your web browser_
+* _In phpmyadmin choose the Import tab and find the hair_salon.sql.zip database file in your project directory and click Go. Repeat for hair_salon_test.sql.zip. It's important to make sure you're not importing to a database that already exists, so make sure that a database with the same name as the one you're importing doesn't already exist._
 * _In your web browser enter localhost:8000 to view the web app._
 
 
@@ -22,6 +23,7 @@ _This app allows the user to enter the names of Stylists at a Hair Salon as well
 ## Known Bugs
 
 _The Styling is Less than great_
+
 
 ## Support and contact details
 
